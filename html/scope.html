@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>scopt 作用域</title>
+</head>
+<body>
+	<!-- scope的使用 -->
+	<!-- <div ng-app="myApp" ng-controller="myCtrl">
+		<h1>{{carname}}</h1>
+	</div> -->
+
+	<!-- scope 作用范围 -->
+	<!-- <div ng-app="myApp" ng-controller="myCtrl">
+		<ul>
+			<li ng-repeat="x in name">{{x}}</li>
+		</ul>
+	</div> -->
+
+	<!-- 根作用域 -->
+	
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<h1>{{lastname}}家族成员：</h1>
+		<ul>
+			<li ng-repeat="x in names">{{x}}{{lastname}}</li>
+		</ul>
+	</div>
+	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	<script>
+		//scope的使用
+		/*var app=angular.module('myApp',[]);
+		app.controller('myCtrl',function($scope){
+			$scope.carname="Volvo";
+		});*/
+
+		//scope 的作用范围
+		/*var app=angular.module('myApp',[]);
+		app.controller('myCtrl',function($scope){
+			$scope.name=["emil","tobias","linus"];
+		});*/
+
+		//根作用域
+		 var app=angular.module("myApp",[]);
+		 app.controller("myCtrl",function($scope,$rootScope){
+		 	$scope.names=["Emil","Tobias","Linus"];
+		 	$rootScope.lastname="Refsnes";
+		 })
+
+	</script>
+</body>
+</html>

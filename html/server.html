@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>服务的运用</title>
+</head>
+<body>
+
+	<!-- 自定义服务 -->
+	<!-- <div ng-app="myApp" ng-controller="myCtrl">
+		  {{hex}}
+	</div> -->
+
+	<!-- 在过滤器中使用自定义服务 -->
+	<div ng-app="myApp" ng-controller="myCtrl">
+			{{78 | myFormat}}
+	</div>
+	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	<script>
+
+		//自定义服务器
+		/*var app=angular.module("myApp",[]);
+		app.controller("myCtrl",function($scope,hexafy){
+			$scope.hex=255;
+			$scope.hex=hexafy.myFunc($scope.hex);
+		});
+
+		app.service('hexafy',function(){
+			this.myFunc=function(x){
+				return x.toString(16);
+			}
+		});*/
+
+		//在过滤器中使用服务 
+		var app=angular.module("myApp",[]);
+		app.controller("myCtrl",function($scope,hexafy){
+
+		});
+		app.service('hexafy',function(){
+			this.myFunc=function(x){
+				return x.toString(16);
+			}
+		});
+
+		app.filter('myFormat',['hexafy',function(hexafy){
+			return function(x){
+				return hexafy.myFunc(x);
+			}
+		}]);
+	</script>
+</body>
+</html>
